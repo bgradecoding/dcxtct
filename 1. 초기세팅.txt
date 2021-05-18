@@ -4,3 +4,75 @@ npm i react-router-dom
 
 npm i @material-ui/core
 
+
+
+
+//화면 띄우기
+
+npm run start
+
+
+
+
+
+// 페이지 수를 보고 페이지 만큼 js 파일 만들기
+
+src
+  ㄴpages
+   ㄴpage1.js
+   ㄴpage2.js
+
+
+//page1.js 내용
+
+import React from 'react'
+
+export default function page1(){
+
+    return (
+        <div>page1</div>
+    )
+}
+
+
+
+//page2.js 내용
+
+import React from 'react'
+
+export default function page2(){
+
+    return (
+        <div>page2</div>
+    )
+}
+
+
+
+// App.js 수정
+
+
+import React from 'react';
+import page1 from './pages/page1';
+import page2 from './pages/page2';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+      <Route path="/" exact component={page1}/>
+      <Route path="/page2" component={page2}/>
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+
+// default url에서 http://localhost:3000/        page1
+// default url에서 http://localhost:3000/page2   page2
+// Page 잘 보여지는지 확인
