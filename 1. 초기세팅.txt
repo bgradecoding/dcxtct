@@ -5,6 +5,11 @@ npm i react-router-dom
 npm i @material-ui/core
 
 
+//만약 문제가 swipe일 경우 설치
+npm i react-swipe
+//swipe touch 까지 요구할 경우
+npm i react-swipeable
+
 
 //image 옮기기
 
@@ -115,12 +120,12 @@ export default class BaseService {
 //page1.js 내용
 //이미지 태그 먹는지 확인
 //map method 확인
-
+//pgae2 넘어갈때 파라미터 같이 넘기는거 확인
 
 
 import React, { useEffect, useState } from 'react'
 import BaseService from '../service/baseService'
-
+import {useHistory, useParams} from 'react-router-dom'
 
 function Page1() {
 
@@ -130,8 +135,8 @@ function Page1() {
         //fnRest(method, url, requestBody)
         const result = await baseService.fnRest('', '', '')
     }
+    const history = useHistory()
 
-    
     const [list, setList] = useState([]);
     const listex = [
         { name : 'aaa', age :10 },
@@ -139,7 +144,9 @@ function Page1() {
         { name : 'ccc', age :10 },
         { name : 'ddd', age :10 },
     ]
-    
+    function page2Move(){
+        history.push('/page2/넘어간다파라미터')
+    }
 
     useEffect(()=>{
         init()
@@ -149,6 +156,7 @@ function Page1() {
     return (
         <>
         <div>page1</div>
+        <a href=' ' onClick={page2Move}>page2 이동</a>
         {/* <img src='images/captain.jpg' /> 이미지명 바꿔서 이미지 로드에 사용 */}
 
         {/* list 뿌릴때 사용하는 map 함수 사용법 */}
@@ -181,12 +189,14 @@ export default Page1
 //뒤로 가기 버튼 활용
 
 import React from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 
 
 export default function Page2(){
 
     const history = useHistory()
+    const {param} = useParams()
+
 
     function backButton(){
         history.push('/')
@@ -196,6 +206,7 @@ export default function Page2(){
         <>
         <a href=' ' onClick={()=>backButton()}>뒤로가기</a>
         <div>page2</div>
+        <div>받음 param : {param}</div>
         </>
     )
 }

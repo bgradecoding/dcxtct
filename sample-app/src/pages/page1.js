@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BaseService from '../service/baseService'
-
+import {useHistory, useParams} from 'react-router-dom'
 
 function Page1() {
 
@@ -10,8 +10,8 @@ function Page1() {
         //fnRest(method, url, requestBody)
         const result = await baseService.fnRest('', '', '')
     }
+    const history = useHistory()
 
-    
     const [list, setList] = useState([]);
     const listex = [
         { name : 'aaa', age :10 },
@@ -19,7 +19,9 @@ function Page1() {
         { name : 'ccc', age :10 },
         { name : 'ddd', age :10 },
     ]
-    
+    function page2Move(){
+        history.push('/page2/넘어간다파라미터')
+    }
 
     useEffect(()=>{
         init()
@@ -29,6 +31,7 @@ function Page1() {
     return (
         <>
         <div>page1</div>
+        <a href=' ' onClick={page2Move}>page2 이동</a>
         {/* <img src='images/captain.jpg' /> 이미지명 바꿔서 이미지 로드에 사용 */}
 
         {/* list 뿌릴때 사용하는 map 함수 사용법 */}

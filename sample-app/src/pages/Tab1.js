@@ -8,6 +8,8 @@ import Box from '@material-ui/core/Box';
 
 // 이 부분이 tab을 누루면 바뀌는 부분 따로 파일로 하지말고 한 파일 내에서 바꾸기
 function TabPanel(props ) {
+
+    //props 쓰는법 확인
     const { children, value, index, ...other } = props;
   
     return (
