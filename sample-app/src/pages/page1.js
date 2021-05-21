@@ -17,7 +17,10 @@ function Page1() {
     }, [] )
 
     return (
+        <>
         <div>page1</div>
+        {/* <img src='images/captain.jpg' /> 이미지명 바꿔서 이미지 로드에 사용 */}
+        </>
     )
 }
 
