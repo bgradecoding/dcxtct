@@ -1,78 +1,79 @@
-// npm 설치
-
-npm i react-router-dom
-
-npm i @material-ui/core
-
-
-
-
-//화면 띄우기
-
-npm run start
+//문제가 탭이 나올경우 사용
 
 
 
 
 
-// 페이지 수를 보고 페이지 만큼 js 파일 만들기
-
-src
-  ㄴpages
-   ㄴpage1.js
-   ㄴpage2.js
 
 
-//page1.js 내용
+import React from 'react';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-import React from 'react'
 
-export default function page1(){
 
+// 이 부분이 tab을 누루면 바뀌는 부분 따로 파일로 하지말고 한 파일 내에서 바꾸기
+function TabPanel(props ) {
+    const { children, value, index, ...other } = props;
+  
     return (
-        <div>page1</div>
-    )
-}
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={3}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
 
-
-
-//page2.js 내용
-
-import React from 'react'
-
-export default function page2(){
-
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+  
+  
+  export default function SimpleTabs() {
+    const [value, setValue] = React.useState(0);
+  
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+  
     return (
-        <div>page2</div>
-    )
-}
 
+      // Container에는 display, flex-flow, justify-content 등의 속성을 사용할 수 있으며,
+      // Items에는 order, flex, align-self 등의 속성을 사용할 수 있습니다.
+      <div style={{ display: 'flex' ,justifyContent: 'center' ,flexDirection: 'column',  alignItems: 'center'}}>
+        <div>
+          <Tabs value={value} style={{}} onChange={handleChange} aria-label="simple tabs example">
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Item Three" {...a11yProps(2)} />
+          </Tabs>
+          </div>
+        <div style={{}}>
+        <TabPanel value={value} index={0}>
+          Item One
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Item Three
+        </TabPanel>
+        </div>
+      </div>
+    );
+  }
 
-
-// App.js 수정
-
-
-import React from 'react';
-import page1 from './pages/page1';
-import page2 from './pages/page2';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-function App() {
-  return (
-    <Router>
-      <Switch>
-      <Route path="/" exact component={page1}/>
-      <Route path="/page2" component={page2}/>
-      </Switch>
-    </Router>
-  );
-}
-
-export default App;
-
-
-
-
-// default url에서 http://localhost:3000/        page1
-// default url에서 http://localhost:3000/page2   page2
-// Page 잘 보여지는지 확인

@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+
+
+// 이 부분이 tab을 누루면 바뀌는 부분 따로 파일로 하지말고 한 파일 내에서 바꾸기
 function TabPanel(props ) {
     const { children, value, index, ...other } = props;
   
@@ -43,6 +43,9 @@ function TabPanel(props ) {
     };
   
     return (
+
+      // Container에는 display, flex-flow, justify-content 등의 속성을 사용할 수 있으며,
+      // Items에는 order, flex, align-self 등의 속성을 사용할 수 있습니다.
       <div style={{ display: 'flex' ,justifyContent: 'center' ,flexDirection: 'column',  alignItems: 'center'}}>
         <div>
           <Tabs value={value} style={{}} onChange={handleChange} aria-label="simple tabs example">

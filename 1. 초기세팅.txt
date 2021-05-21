@@ -6,6 +6,14 @@ npm i @material-ui/core
 
 
 
+//image 옮기기
+
+//제공된 이미지 파일을 public 폴더에 imgaes 폴더를 만들고 옮긴다.
+
+
+
+
+
 
 //화면 띄우기
 
@@ -105,6 +113,10 @@ export default class BaseService {
 
 
 //page1.js 내용
+//이미지 태그 먹는지 확인
+//map method 확인
+
+
 
 import React, { useEffect, useState } from 'react'
 import BaseService from '../service/baseService'
@@ -114,18 +126,42 @@ function Page1() {
 
     const baseService = BaseService.getInstance()
     async function init(){
+
+        //fnRest(method, url, requestBody)
         const result = await baseService.fnRest('', '', '')
     }
-    const [count, setCount] = useState(0);
+
     
+    const [list, setList] = useState([]);
+    const listex = [
+        { name : 'aaa', age :10 },
+        { name : 'bbb', age :20 },
+        { name : 'ccc', age :10 },
+        { name : 'ddd', age :10 },
+    ]
     
 
     useEffect(()=>{
         init()
+        setList(listex)
     }, [] )
 
     return (
+        <>
         <div>page1</div>
+        {/* <img src='images/captain.jpg' /> 이미지명 바꿔서 이미지 로드에 사용 */}
+
+        {/* list 뿌릴때 사용하는 map 함수 사용법 */}
+        {
+            list.map((v,i)=>(
+                <div key={i}>
+                    <span>{v.name}</span>
+                    <span>{v.age}</span>
+                </div>
+            ))
+        }
+
+        </>
     )
 }
 
@@ -142,16 +178,27 @@ export default Page1
 
 
 //page2.js 내용
+//뒤로 가기 버튼 활용
 
 import React from 'react'
+import {useHistory} from 'react-router-dom'
+
 
 export default function Page2(){
 
+    const history = useHistory()
+
+    function backButton(){
+        history.push('/')
+    }
+
     return (
+        <>
+        <a href=' ' onClick={()=>backButton()}>뒤로가기</a>
         <div>page2</div>
+        </>
     )
 }
-
 
 
 
