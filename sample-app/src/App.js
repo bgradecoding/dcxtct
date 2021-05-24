@@ -4,6 +4,7 @@ import Page2 from './pages/Page2';
 import Tab1 from './pages/Tab1';
 import Table from './pages/Table';
 import Swipe from './pages/Swipe';
+import CssEx from './pages/CssEx'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/table" component={Table}/>
       <Route path="/tab1" component={Tab1}/>
       <Route path="/Swipe" component={Swipe}/>
+      <Route path="/css" component={CssEx}/>
       </Switch>
     </Router>
   );
