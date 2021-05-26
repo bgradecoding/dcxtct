@@ -29,7 +29,7 @@ function Page1() {
     }, [] )
 
     return (
-        <>
+        <div  style={{ display: 'flex' ,justifyContent: 'center' ,flexDirection: 'column',  alignItems: 'center'}}>
         <div>page1</div>
         <a href=' ' onClick={page2Move}>page2 이동</a>
         {/* <img src='images/captain.jpg' /> 이미지명 바꿔서 이미지 로드에 사용 */}
@@ -44,7 +44,7 @@ function Page1() {
             ))
         }
 
-        </>
+        </div>
     )
 }
 

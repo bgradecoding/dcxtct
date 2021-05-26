@@ -4,10 +4,14 @@ npm i react-router-dom
 
 npm i @material-ui/core
 
+npm install --save styled-components
 
 //만약 문제가 swipe일 경우 설치
+
 npm i react-swipe
+
 //swipe touch 까지 요구할 경우
+
 npm i react-swipeable
 
 
@@ -18,24 +22,14 @@ npm i react-swipeable
 
 
 
-
-
-//화면 띄우기
-
-npm run start
-
-
-
-
-
 // 페이지 수를 보고 페이지 만큼 js 파일 만들기
 // 서버 통신을 위한 axios baseService 만들기
 
 
 src
   ㄴpages
-   ㄴpage1.js
-   ㄴpage2.js
+   ㄴPage1.js
+   ㄴPage2.js
   ㄴservice
    ㄴbaseService.js
 
@@ -68,7 +62,7 @@ export default class BaseService {
     
     this.config.method = method
     
-    this.config.url = 'http://localhost:3300/users/' + url    //문제 url 넣기
+    this.config.url = 'http://localhost:3300/v1/' + url    //문제 url 넣기
 
     this.config.data = requestBody
 
@@ -243,6 +237,9 @@ export default App;
 
 
 
+//화면 띄우기
+
+npm run start
 
 // default url에서 http://localhost:3000/        page1
 // 서버 호출을 문제 스펙에 맞게 해서 page1에서 호출이 잘 되는지 확인한다.
